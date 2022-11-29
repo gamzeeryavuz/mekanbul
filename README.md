@@ -8,3 +8,9 @@
  
 - [Konum verilen mekan](https://mekanbul5.gamzeryavuz.repl.co/api/mekanlar?enlem=35.&&boylam=34)
   ![](https://github.com/gamzeeryavuz/mekanbul/blob/odev5/resimler/konumMekan.PNG)
+
+- API Test
+ ![](https://github.com/gamzeeryavuz/mekanbul/blob/odev6/resimler/APITest.PNG)
+ 
+- Collections Test
+ ![](https://github.com/gamzeeryavuz/mekanbul/blob/odev6/resimler/collectionsTest.png)
