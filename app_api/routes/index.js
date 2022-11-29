@@ -1,7 +1,7 @@
 var express=require("express");
 var router=express.Router();
-var ctrlMekanlar=require("../controllers/mekanlar");
-var ctrlYorumlar=require("../controllers/yorumlar");
+var ctrlMekanlar = require("../controllers/mekanlar");
+var ctrlYorumlar = require("../controllers/yorumlar");
 
 router
 .route("/mekanlar/:mekanid")
@@ -24,4 +24,4 @@ router
 .put(ctrlYorumlar.yorumGuncelle)
 .delete(ctrlYorumlar.yorumSil);
 
-module.exports=router;
+module.exports=router; //routeri dış dünyaya açıyoruz
