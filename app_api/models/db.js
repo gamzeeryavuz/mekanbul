@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
-var dbURI = 'mongodb://localhost/mekanbul';
-//var dbURI = "mongodb+srv://sudkostik:805805@mekanbul.t8xpxhq.mongodb.net/mekanbul?retryWrites=true&w=majority";
+//var dbURI = 'mongodb://localhost/mekanbul';
+var dbURI ="mongodb+srv://gamze:1234@mekanbul.ppa12ox.mongodb.net/?retryWrites=true&w=majority"
+
 require("./mekansema"); //db.js dosyası mekansema içindeki her şeyi kullanabilmesi için tanıttık
 
 
