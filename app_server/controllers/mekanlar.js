@@ -86,7 +86,7 @@ const hataGoster = function (res, hata) {
 const mekanBilgisi = function (req, res, next) {
   axios.get(apiSecenekleri.sunucu + apiSecenekleri.apiYolu + req.params.mekanid)
     .then(function (response) {
-      req.session.mekanAdi =response.data.ad;
+      req.session.mekanAdi=response.data.ad;
       detaySayfasiOlustur(res, response.data)
     })
     .catch(function (hata) {
@@ -96,41 +96,32 @@ const mekanBilgisi = function (req, res, next) {
 
 const yorumEkle = function (req, res, next) {
   var mekanAdi=req.session.mekanAdi;
-  if(!mekanAdi)
+  var mekanid = req.params.mekanid;
+  if(!mekanAdi){
     res.redirect("/mekan/"+mekanid);
-    else res.render("yorumekle",{ 
-      baslik:mekanAdi +"mekanına yorum ekle "
-
-    });
+  }else{
+    res.render('yorumekle', { "baslik":mekanAdi+" mekanına yorum ekle",title: 'Yorum Sayfası' });
   }
-
-const yorumumuEkle=function(req,res){
-var gonderilenYorum,mekanid;
-mekanid=req.params.mekanid;
-if(!req.body.adsoyad || !req.body.yorum){
-  res.redirect("/mekan/"+mekanid +"/yorum/yeni?hata=evet");
-
-} else{
-   gonderilenYorum={
-    yorumYapan:req.body.adSoyad,
-    puan:parseInt(req.body.puan,10),
-    yorumMetni:req.body.yorum,
-
-   };
-   axios
-     .post(
-        apiSecenekleri.sunucu+apiSecenekleri.apiYolu+mekanid+"/yorumlar",
-        gonderilenYorum
-   ) 
-   .then(function(){
-     res.redirect("/mekan/"+mekanid);
-   }) 
-   .catch(function(hata){
-    hataGoster(req,res,hata);
-   });
 }
-};
-
+const yorumumuEkle = function(req,res){
+  var gonderilenYorum,mekanid;
+  mekanid=req.params.mekanid;
+  if(!req.body.adsoyad || !req.body.yorum){
+    res.redirect("/mekan/"+mekanid+"/yorum/yeni?hata=evet");
+  }
+  else{
+    gonderilenYorum={
+      yorumYapan:req.body.adsoyad,
+      puan:req.body.puan,
+      yorumMetni:req.body.yorum
+    }
+    axios
+    .post(apiSecenekleri.sunucu+apiSecenekleri.apiYolu+mekanid+"/yorumlar",gonderilenYorum)
+    .then(function(){
+      res.redirect("/mekan/"+mekanid);
+    })
+  }
+}
 module.exports = {
   anaSayfa,
   mekanBilgisi,
